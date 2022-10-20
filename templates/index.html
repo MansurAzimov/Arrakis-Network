@@ -1,8 +1,12 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<a href="{% url 'new_post' %}">Новый пост</a>
-
+{% if user.is_authenticated %}
+    {{ user.username }}
+    <a href="{% url 'logout' %}">Выйти</a>
+{% else %}
+<a href="{% url 'login' %}">Войти</a>
+{% endif %}
 {% for post in posts %}
 <h3>{{ post.title }}</h3>
 <p>{{ post.body }}</p>
