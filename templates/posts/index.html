@@ -3,9 +3,11 @@
 {% block content %}
 {% if user.is_authenticated %}
     {{ user.username }}
+    <a href="{% url 'new_post' %}">Новый пост</a>
     <a href="{% url 'logout' %}">Выйти</a>
 {% else %}
 <a href="{% url 'login' %}">Войти</a>
+<a href="{% url 'signup' %}">Регистрация</a>
 {% endif %}
 {% for post in posts %}
 <h3>{{ post.title }}</h3>

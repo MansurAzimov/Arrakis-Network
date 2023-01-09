@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>{{ post.title }}</h3>
+<p>{{ post.body }}</p>
+<h4>{{ post.author }}</h4>
+
+{% if user.is_authenticated %}
+<form action="add_comment" method="post">
+    <input type="text" name="message">
+    <button>Добавить комментарий</button>
+</form>
+{% endif %}
+{% endblock %}
