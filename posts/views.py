@@ -1,4 +1,4 @@
-from django.views.generic import ListView,DetailView,CreateView
+from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 from django.shortcuts import redirect
 from posts.models import Post,Comment
 
@@ -29,3 +29,16 @@ def add_comment(request):
     message = request.POST.form.get('message')
     comment = Comment(message=message, author=request.user)
     comment.save()
+    return request ('posts_detail')
+
+class PostUpdateView(UpdateView):
+    model = Post
+    template_name ='posts/post_update.html'
+
+    fields = ['title', 'body']
+
+class PostDeleteView(DeleteView):
+    model = Post
+    success_url='/'
+    template_name ='posts/post_delete.html'
+

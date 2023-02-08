@@ -9,6 +9,9 @@ class Post (models.Model):
     def __str__(self) -> str:
         return self.title
 
+    def get_absolute_url(self):
+        return f'/{self.id}'
+
     class Meta:
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
